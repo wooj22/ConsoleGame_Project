@@ -129,6 +129,12 @@
   <ItemGroup>
     <ClCompile Include="ConsoleRenderer.cpp" />
     <ClCompile Include="EndScene.cpp" />
+    <ClCompile Include="Floor2Scene.cpp" />
+    <ClCompile Include="Floor3Scene.cpp" />
+    <ClCompile Include="Floor4Scene.cpp" />
+    <ClCompile Include="Floor5Scene.cpp" />
+    <ClCompile Include="Floor6Scene.cpp" />
+    <ClCompile Include="Floor7Scene.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="MapData.cpp" />
@@ -139,6 +145,12 @@
   <ItemGroup>
     <ClInclude Include="ConsoleRenderer.h" />
     <ClInclude Include="EndScene.h" />
+    <ClInclude Include="Floor2Scene.h" />
+    <ClInclude Include="Floor3Scene.h" />
+    <ClInclude Include="Floor4Scene.h" />
+    <ClInclude Include="Floor5Scene.h" />
+    <ClInclude Include="Floor6Scene.h" />
+    <ClInclude Include="Floor7Scene.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="MapData.h" />

@@ -1,10 +1,9 @@
 ﻿#include <stdio.h>
+#include "ConsoleRenderer.h"
+#include "Input.h"
 #include "GameManager.h"
 #include "MenuScene.h"
 #include "Floor1Scene.h"
-#include "ConsoleRenderer.h"
-#include "Input.h"
-#include "MapData.h"
 
 namespace Menu {
     // Map Data

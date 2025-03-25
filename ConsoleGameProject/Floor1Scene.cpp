@@ -1,10 +1,10 @@
 ﻿#include <stdio.h>
+#include "ConsoleRenderer.h"
+#include "Input.h"
 #include "GameManager.h"
 #include "Floor1Scene.h"
 #include "EndScene.h"
-#include "ConsoleRenderer.h"
-#include "Input.h"
-#include "MapData.h"
+
 
 namespace Floor1 {
 	// Map Data
@@ -100,7 +100,7 @@ namespace Floor1 {
 		//ConsoleRenderer::ScreenDrawChar(g_Player.X, g_Player.Y, 'P', FG_WHITE);
         for (int i = 0; i < mapHeight; i++)
         {
-            ConsoleRenderer::ScreenDrawStringW(0, i, floor1Map[i], FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+            ConsoleRenderer::ScreenDrawStringW(0, i, floor1Map[i], FG_GRAY | FOREGROUND_INTENSITY);
         }
         
 	}
