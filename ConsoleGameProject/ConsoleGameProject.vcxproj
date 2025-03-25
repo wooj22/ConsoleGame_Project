@@ -131,6 +131,7 @@
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="MapData.cpp" />
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="Floor1Scene.cpp" />
     <ClCompile Include="Time.cpp" />
@@ -140,9 +141,14 @@
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="MapData.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="Floor1Scene.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Time.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ConsoleGameProject.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
