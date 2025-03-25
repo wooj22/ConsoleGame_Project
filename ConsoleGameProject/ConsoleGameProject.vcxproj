@@ -131,8 +131,8 @@
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="Floor1Scene.cpp" />
-    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>

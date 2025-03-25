@@ -1,95 +1,132 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include "Game.h"
-#include "MenuScene.h"
 #include "Floor1Scene.h"
+#include "EndScene.h"
 #include "ConsoleRenderer.h"
 #include "Input.h"
 
-namespace Menu {
-    // Map
-    const wchar_t* menuMap[] = {
-     L"############################################################",
-    L"                                                            ",
-    L"                                                            ",
-    L"   TTTTT  OOO  W   W  EEEEE  RRRR      OOO   FFFFF   77777  ",
-    L"     T   O   O W   W  E      R   R    O   O  F       7   7  ",
-    L"     T   O   O W W W  EEEE   RRRR     O   O  FFFF        7  ",
-    L"     T   O   O WW WW  E      R  R     O   O  F           7  ",
-    L"     T    OOO  W   W  EEEEE  R   R     OOO   F           7  ",
-    L"                                                            ",
-    L"                                                            ",
-    L"                                                            ",
-    L"############################################################",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄        ✨ #",
-    L"#            █░░░░░░░░▀█▄▀▄▀██████░▀█▄▀▄▀██████░    ✨✨   #",
-    L"#     ✨     ░░░░░░░░░░░▀█▄█▄███▀░░░ ▀██▄█▄███▀░           #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                      ***************                     #",
-    L"#                                                          #",
-    L"#                   >>  Game Start                         #",
-    L"#                                                          #",
-    L"#                       How to Play?                       #",
-    L"#                                                          #",
-    L"#                      ***************                     #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"#                                                          #",
-    L"############################################################"
+namespace Floor1 {
+	// Map
+    const char* floor1Map[] = {
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                    Current Floor : 1                       ",
+    "                  �� ������ �Ŷ��ϰ���?                       ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "############################################################",
+    "#                                                          #",
+    "#                                                     G    #",
+    "#                                              ============#",
+    "#                                                          #",
+    "#                                                          #",
+    "#                                     ============         #",
+    "#                                                          #",
+    "#                                                          #",
+    "#                           ============                   #",
+    "#                                                          #",
+    "#                                                          #",
+    "#                 ============                             #",
+    "#                                                          #",
+    "#                                                          #",
+    "#         ============                                     #",
+    "#                                                          #",
+    "#                                                          #",
+    "#============                                              #",
+    "#                                                          #",
+    "#                                                          #",
+    "#            ============                                  #",
+    "#                                                          #",
+    "#                                                          #",
+    "#                       ============                       #",
+    "#                                                          #",
+    "#                                                          #",
+    "#                                   ============           #",
+    "#                                                          #",
+    "#                                                          #",
+    "#                                              ============#",
+    "#                                                          #",
+    "#                                                          #",
+    "#                                     ============         #",
+    "#                                                          #",
+    "#                                                          #",
+    "#                              ============                #",
+    "#                                                          #",
+    "#                                                          #",
+    "#                      ============                        #",
+    "#                                                          #",
+    "#                                                          #",
+    "#              ============                                #",
+    "#                                                          #",
+    "#                                                          #",
+    "#        ============                                      #",
+    "#  P                                                       #",
+    "#==========================================================#",
+    "############################################################"
     };
-    const int mapHeight = sizeof(menuMap) / sizeof(menuMap[0]);
+    const int mapHeight = sizeof(floor1Map) / sizeof(floor1Map[0]);
+
+    // Player
+	COORD g_Player = { 0,0 };
+	//bool g_bQuit = false;
 
 	// Start
 	void Initalize() {
 
 	}
 
-	// Update 
+	// Update
 	void Update() {
+		// input & play controll
+		ProcessInput();
+		PlayerMove();
+
 		// scene change
 		if (Input::IsKeyPressed(VK_SPACE)) {
-			Game::g_SceneCurrent = Game::PLAY_SCENE;
-			Floor1::Initalize();
+			Game::g_SceneCurrent = Game::END_SCENE;
+			End::Initalize();
 		}
 	}
 
 	// Render
 	void Render() {
+		//ConsoleRenderer::ScreenDrawString(0, 0, "PLAY SCENE  [Spacebar]", FG_RED);
+		//ConsoleRenderer::ScreenDrawChar(g_Player.X, g_Player.Y, 'P', FG_WHITE);
         for (int i = 0; i < mapHeight; i++)
         {
-            ConsoleRenderer::ScreenDrawStringW(0, i, menuMap[i], FG_YELLOW);
+            ConsoleRenderer::ScreenDrawString(0, i, floor1Map[i], FOREGROUND_GREEN | FOREGROUND_INTENSITY);
         }
+        
+	}
+
+	void ProcessInput()
+	{
+		if (Input::IsKeyDown(VK_LEFT)) {
+			g_Player.X--;
+		}
+		if (Input::IsKeyDown(VK_RIGHT)) {
+			g_Player.X++;
+		}
+		if (Input::IsKeyDown(VK_UP)) {
+			g_Player.Y--;
+		}
+		if (Input::IsKeyDown(VK_DOWN)) {
+			g_Player.Y++;
+		}
+		/*if (Input::IsKeyDown(VK_ESCAPE)) {
+			g_bQuit = true;
+		}*/
+	}
+
+	void PlayerMove() {
+		if (g_Player.X < 0) g_Player.X = 0;
+		if (g_Player.X >= ConsoleRenderer::ScreenWidth()) g_Player.X = ConsoleRenderer::ScreenWidth() - 1;
+		if (g_Player.Y < 0) g_Player.Y = 0;
+		if (g_Player.Y >= ConsoleRenderer::ScreenHeight()) g_Player.Y = ConsoleRenderer::ScreenHeight() - 1;
 	}
 }

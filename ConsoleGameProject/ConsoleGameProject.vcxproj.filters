@@ -27,10 +27,10 @@
     <ClCompile Include="ConsoleRenderer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Floor1Scene.cpp">
+    <ClCompile Include="MenuScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
+    <ClCompile Include="Floor1Scene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="EndScene.cpp">
