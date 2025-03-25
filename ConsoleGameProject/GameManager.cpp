@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
-#include "Game.h"
+#include "GameManager.h"
 #include "MenuScene.h"
 #include "Floor1Scene.h"
 #include "EndScene.h"

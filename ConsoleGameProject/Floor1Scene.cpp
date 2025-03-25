@@ -1,5 +1,5 @@
 ﻿#include <stdio.h>
-#include "Game.h"
+#include "GameManager.h"
 #include "Floor1Scene.h"
 #include "EndScene.h"
 #include "ConsoleRenderer.h"
