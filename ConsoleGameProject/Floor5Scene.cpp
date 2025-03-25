@@ -8,11 +8,11 @@
 
 namespace Floor5 {
 	// Map Data
-	const wchar_t* floor5Map[] = {
+	const wchar_t* floor5StaticMap[] = {
 
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	};
-	const int mapHeight = sizeof(floor5Map) / sizeof(floor5Map[0]);
+	const int mapHeight = sizeof(floor5StaticMap) / sizeof(floor5StaticMap[0]);
 
 
 	// Start
@@ -33,7 +33,7 @@ namespace Floor5 {
 	void Render() {
 		for (int i = 0; i < mapHeight; i++)
 		{
-			ConsoleRenderer::ScreenDrawStringW(0, i, floor5Map[i], FG_GRAY | FOREGROUND_INTENSITY);
+			ConsoleRenderer::ScreenDrawStringW(0, i, floor5StaticMap[i], FG_GRAY | FOREGROUND_INTENSITY);
 		}
 	}
 }

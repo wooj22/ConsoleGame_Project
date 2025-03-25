@@ -84,7 +84,6 @@ namespace Floor1 {
 	// Update
 	void Update() {
 		// input & play controll
-		ProcessInput();
 		PlayerMove();
 
 		// scene change
@@ -96,31 +95,26 @@ namespace Floor1 {
 
 	// Render
 	void Render() {
-		//ConsoleRenderer::ScreenDrawString(0, 0, "PLAY SCENE  [Spacebar]", FG_RED);
-		//ConsoleRenderer::ScreenDrawChar(g_Player.X, g_Player.Y, 'P', FG_WHITE);
+		// map
         for (int i = 0; i < mapHeight; i++)
         {
             ConsoleRenderer::ScreenDrawStringW(0, i, floor1StaticMap[i], FG_GRAY | FOREGROUND_INTENSITY);
         }
+
+		// player
+		ConsoleRenderer::ScreenDrawChar(g_Player.X, g_Player.Y, 'P', FG_RED);
 	}
 
-	void ProcessInput()
+	// Player Move
+	void PlayerMove()
 	{
-		if (Input::IsKeyDown(VK_LEFT)) {
-			g_Player.X--;
-		}
-		if (Input::IsKeyDown(VK_RIGHT)) {
-			g_Player.X++;
-		}
-		if (Input::IsKeyDown(VK_UP)) {
-			g_Player.Y--;
-		}
-		if (Input::IsKeyDown(VK_DOWN)) {
-			g_Player.Y++;
-		}
-	}
+		// input
+		if (Input::IsKeyDown(VK_LEFT)) { g_Player.X--; }
+		if (Input::IsKeyDown(VK_RIGHT)) { g_Player.X++; }
+		if (Input::IsKeyDown(VK_UP)) { g_Player.Y--; }
+		if (Input::IsKeyDown(VK_DOWN)) { g_Player.Y++; }
 
-	void PlayerMove() {
+		// threshold
 		if (g_Player.X < 0) g_Player.X = 0;
 		if (g_Player.X >= ConsoleRenderer::ScreenWidth()) g_Player.X = ConsoleRenderer::ScreenWidth() - 1;
 		if (g_Player.Y < 0) g_Player.Y = 0;
