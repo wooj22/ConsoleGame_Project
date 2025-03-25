@@ -1,11 +1,11 @@
 ﻿#include <stdio.h>
 #include "ConsoleRenderer.h"
 #include "Input.h"
+#include "Time.h"
 #include "GameManager.h"
 #include "Floor1Scene.h"
 #include "Floor2Scene.h"
 #include "EndScene.h"
-
 
 namespace Floor1 {
 	// Map Data
@@ -108,16 +108,32 @@ namespace Floor1 {
 	// Player Move
 	void PlayerMove()
 	{
-		// input
-		if (Input::IsKeyDown(VK_LEFT)) { g_Player.X--; }
-		if (Input::IsKeyDown(VK_RIGHT)) { g_Player.X++; }
-		if (Input::IsKeyDown(VK_UP)) { g_Player.Y--; }
-		if (Input::IsKeyDown(VK_DOWN)) { g_Player.Y++; }
+		// 임시 좌표
+		int nextX = g_Player.X;
+		int nextY = g_Player.Y;
 
-		// threshold
-		if (g_Player.X < 0) g_Player.X = 0;
-		if (g_Player.X >= ConsoleRenderer::ScreenWidth()) g_Player.X = ConsoleRenderer::ScreenWidth() - 1;
-		if (g_Player.Y < 0) g_Player.Y = 0;
-		if (g_Player.Y >= ConsoleRenderer::ScreenHeight()) g_Player.Y = ConsoleRenderer::ScreenHeight() - 1;
+		// 입력 처리
+		if (Input::IsKeyDown(VK_LEFT) && floor1StaticMap[g_Player.Y][g_Player.X - 1] != L'▓') {
+			nextX--;
+		}
+		if (Input::IsKeyDown(VK_RIGHT) && floor1StaticMap[g_Player.Y][g_Player.X + 1] != L'▓') {
+			nextX++;
+		}
+		if (Input::IsKeyDown(VK_UP) && floor1StaticMap[g_Player.Y - 1][g_Player.X] != L'▓') {
+			nextY--;
+		}
+		if (Input::IsKeyDown(VK_DOWN) && floor1StaticMap[g_Player.Y + 1][g_Player.X] != L'▓') {
+			nextY++;
+		}
+
+		// 경계 검사 (콘솔 창 크기 기준)
+		if (nextX < 0) nextX = 0;
+		if (nextX >= ConsoleRenderer::ScreenWidth()) nextX = ConsoleRenderer::ScreenWidth() - 1;
+		if (nextY < 0) nextY = 0;
+		if (nextY >= mapHeight) nextY = mapHeight - 1;
+
+		// 최종 위치 업데이트
+		g_Player.X = nextX;
+		g_Player.Y = nextY;
 	}
 }
