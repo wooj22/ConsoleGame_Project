@@ -27,7 +27,7 @@
     <ClCompile Include="ConsoleRenderer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MenuScene.cpp">
+    <ClCompile Include="Floor1Scene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="PlayScene.cpp">
@@ -53,7 +53,7 @@
     <ClInclude Include="MenuScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="PlayScene.h">
+    <ClInclude Include="Floor1Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="EndScene.h">

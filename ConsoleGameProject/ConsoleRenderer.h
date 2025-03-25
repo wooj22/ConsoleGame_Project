@@ -61,6 +61,9 @@ namespace ConsoleRenderer
 	// x, y위치에 문자 ch를 출력하고 속성을 설정
 	bool ScreenDrawChar(int x, int y, char ch, WORD attr);
 
+	bool ScreenDrawStringW(int x, int y, const wchar_t* pStr, WORD attr);
+	bool ScreenDrawChar(int x, int y, wchar_t ch, WORD attr);
+
 	// 특정 위치 (x, y)에 문자열 pStr을 출력하고 속성을 설정
 	bool ScreenDrawString(int x, int y, const char* pStr, WORD attr);
 

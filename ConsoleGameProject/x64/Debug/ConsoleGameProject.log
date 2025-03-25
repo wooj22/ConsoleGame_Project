@@ -1,2 +1,6 @@
-﻿  MenuScene.cpp
+﻿  ConsoleRenderer.cpp
+C:\Users\User\Documents\GitHub\ConsoleGame_Project\ConsoleGameProject\ConsoleRenderer.cpp(28,30): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\ConsoleGame_Project\ConsoleGameProject\ConsoleRenderer.cpp(28,44): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\ConsoleGame_Project\ConsoleGameProject\ConsoleRenderer.cpp(29,54): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\User\Documents\GitHub\ConsoleGame_Project\ConsoleGameProject\ConsoleRenderer.cpp(29,73): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   ConsoleGameProject.vcxproj -> C:\Users\User\Documents\GitHub\ConsoleGame_Project\x64\Debug\ConsoleGameProject.exe

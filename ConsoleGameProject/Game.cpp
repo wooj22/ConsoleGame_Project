@@ -2,7 +2,7 @@
 #include <windows.h>
 #include "Game.h"
 #include "MenuScene.h"
-#include "PlayScene.h"
+#include "Floor1Scene.h"
 #include "EndScene.h"
 #include "ConsoleRenderer.h"
 #include "Input.h"
@@ -28,7 +28,7 @@ namespace Game {
 			Menu::Update();
 			break;
 		case Game::PLAY_SCENE:
-			Play::Update();
+			Floor1::Update();
 			break;
 		case Game::END_SCENE:
 			End::Update();
@@ -49,7 +49,7 @@ namespace Game {
 			Menu::Render();
 			break;
 		case Game::PLAY_SCENE:
-			Play::Render();
+			Floor1::Render();
 			break;
 		case Game::END_SCENE:
 			End::Render();

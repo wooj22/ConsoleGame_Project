@@ -134,6 +134,28 @@ namespace ConsoleRenderer
         return bRval;
     }
 
+    bool ScreenDrawStringW(int x, int y, const wchar_t* pStr, WORD attr)
+    {
+        COORD cdPos;
+        BOOL bRval = FALSE;
+        DWORD dwCharsWritten;
+
+        cdPos.X = x;
+        cdPos.Y = y;
+
+        DWORD nNumberOfCharsToWrite = (DWORD)wcslen(pStr);
+
+        // 유니코드 문자열 출력
+        WriteConsoleOutputCharacterW(hScreenBuffer[nScreenBufferIndex], pStr, nNumberOfCharsToWrite, cdPos, &dwCharsWritten);
+
+        // 문자열 속성 설정
+        bRval = FillConsoleOutputAttribute(hScreenBuffer[nScreenBufferIndex], attr, nNumberOfCharsToWrite, cdPos, &dwCharsWritten);
+        if (!bRval) printf("Error, FillConsoleOutputAttribute()\n");
+
+        return bRval;
+    }
+
+
     /**
      * @brief 특정 위치 (x, y)에 문자열 출력 및 속성 설정
      *
