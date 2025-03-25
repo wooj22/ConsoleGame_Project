@@ -24,7 +24,7 @@ namespace Floor3 {
 	void Update() {
 		// scene change
 		if (Input::IsKeyPressed(VK_SPACE)) {
-			Game::g_SceneCurrent = Game::END_SCENE;
+			Game::g_SceneCurrent = Game::FLOOR4_SCENE;
 			Floor4::Initalize();
 		}
 	}

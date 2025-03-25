@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "GameManager.h"
 #include "Floor1Scene.h"
+#include "Floor2Scene.h"
 #include "EndScene.h"
 
 
@@ -89,8 +90,8 @@ namespace Floor1 {
 
 		// scene change
 		if (Input::IsKeyPressed(VK_SPACE)) {
-			Game::g_SceneCurrent = Game::END_SCENE;
-			End::Initalize();
+			Game::g_SceneCurrent = Game::FLOOR2_SCENE;
+			Floor2::Initalize();
 		}
 	}
 

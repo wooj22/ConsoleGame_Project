@@ -81,7 +81,7 @@ namespace Menu {
 	void Update() {
 		// scene change
 		if (Input::IsKeyPressed(VK_SPACE)) {
-			Game::g_SceneCurrent = Game::PLAY_SCENE;
+			Game::g_SceneCurrent = Game::FLOOR1_SCENE;
 			Floor1::Initalize();
 		}
 	}
