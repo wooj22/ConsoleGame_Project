@@ -14,8 +14,9 @@
 #include "EndScene.h"
 
 namespace Game {
-	// 씬 초기화
+	// 초기화
 	Scene g_SceneCurrent = Game::MENU_SCENE;
+	bool g_isDie = false;
 
 	// Start : 게임 시작
 	void Initalize() {
@@ -26,6 +27,10 @@ namespace Game {
 	void Update() {
 		// key input
 		Input::Update();
+
+		if (Input::IsKeyDown(VK_DELETE)) {
+			Game::g_isDie = true;
+		}
 
 		// update
 		switch (Game::g_SceneCurrent)
@@ -112,7 +117,7 @@ int main() {
 	ConsoleRenderer::ScreenInit();
 	Game::Initalize();
 
-	while (true)
+	while (!Game::g_isDie)
 	{
 		Game::Update();
 		Game::Render();

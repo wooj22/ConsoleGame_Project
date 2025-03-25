@@ -15,5 +15,5 @@ namespace Game {
 	};
 
 	extern Scene g_SceneCurrent;
-	//Scene g_SceneNext;
+	extern bool g_isDie;
 }

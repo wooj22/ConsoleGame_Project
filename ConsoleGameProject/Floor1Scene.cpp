@@ -75,7 +75,6 @@ namespace Floor1 {
 
     // Player
 	COORD g_Player = { 0,0 };
-	//bool g_bQuit = false;
 
 	// Start
 	void Initalize() {
@@ -103,7 +102,6 @@ namespace Floor1 {
         {
             ConsoleRenderer::ScreenDrawStringW(0, i, floor1Map[i], FG_GRAY | FOREGROUND_INTENSITY);
         }
-        
 	}
 
 	void ProcessInput()
@@ -120,9 +118,6 @@ namespace Floor1 {
 		if (Input::IsKeyDown(VK_DOWN)) {
 			g_Player.Y++;
 		}
-		/*if (Input::IsKeyDown(VK_ESCAPE)) {
-			g_bQuit = true;
-		}*/
 	}
 
 	void PlayerMove() {
