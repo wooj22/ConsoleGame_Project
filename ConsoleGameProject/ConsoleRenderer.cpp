@@ -21,12 +21,29 @@ namespace ConsoleRenderer
      */
     void ScreenInit()
     {
-        // 현재 콘솔 핸들을 가져옴
+        // 현재 콘솔 핸들 get
         hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
-        // 더블 버퍼용 콘솔 스크린 버퍼 생성 (2개)
+        // 콘솔창 크기 set
+        nScreenWidth = 60;
+        nScreenHeight = 60;
+        nScreenBufferSize = nScreenWidth * nScreenHeight;
+
+        COORD bufferSize = { nScreenWidth, nScreenHeight };
+        SMALL_RECT windowSize = { 0, 0, nScreenWidth - 1, nScreenHeight - 1 };
+
+        SetConsoleScreenBufferSize(hConsoleHandle, bufferSize);
+        SetConsoleWindowInfo(hConsoleHandle, TRUE, &windowSize);
+
+        // 더블 버퍼 생성
         hScreenBuffer[0] = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
         hScreenBuffer[1] = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
+
+        // 더블 버퍼 사이즈 set
+        SetConsoleScreenBufferSize(hScreenBuffer[0], bufferSize);
+        SetConsoleScreenBufferSize(hScreenBuffer[1], bufferSize);
+        SetConsoleWindowInfo(hScreenBuffer[0], TRUE, &windowSize);
+        SetConsoleWindowInfo(hScreenBuffer[1], TRUE, &windowSize);
 
         // 기본 콘솔 및 생성된 스크린 버퍼의 커서를 숨김
         CONSOLE_CURSOR_INFO cursorInfo = { 0, };
@@ -36,15 +53,6 @@ namespace ConsoleRenderer
         SetConsoleCursorInfo(hConsoleHandle, &cursorInfo);
         SetConsoleCursorInfo(hScreenBuffer[0], &cursorInfo);
         SetConsoleCursorInfo(hScreenBuffer[1], &cursorInfo);
-
-        // 현재 콘솔 창의 크기 정보를 가져옴
-        CONSOLE_SCREEN_BUFFER_INFO Info;
-        GetConsoleScreenBufferInfo(hConsoleHandle, &Info);
-
-        // 콘솔 창의 너비, 높이 및 전체 화면 버퍼 크기 설정
-        nScreenHeight = Info.srWindow.Bottom - Info.srWindow.Top + 1;
-        nScreenWidth = Info.srWindow.Right - Info.srWindow.Left + 1;
-        nScreenBufferSize = nScreenWidth * nScreenHeight;
     }
 
     /**
