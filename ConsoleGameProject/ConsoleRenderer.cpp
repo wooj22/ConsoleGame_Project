@@ -5,9 +5,9 @@ namespace ConsoleRenderer
 {
     HANDLE hConsoleHandle;      // 초기 콘솔 창의 핸들
 
-    int nScreenWidth = 0;       // 콘솔 창의 너비
-    int nScreenHeight = 0;      // 콘솔 창의 높이
-    int nScreenBufferSize = 0;  // 콘솔 창의 스크린 버퍼 크기 (너비 * 높이)
+    int nScreenWidth = 60;       // 콘솔 창의 너비
+    int nScreenHeight = 60;      // 콘솔 창의 높이
+    int nScreenBufferSize = nScreenWidth * nScreenHeight;  // 콘솔 창의 스크린 버퍼 크기 (너비 * 높이)
     int nScreenBufferIndex = 0; // 현재 사용 중인 스크린 버퍼의 인덱스 (0 또는 1)
     HANDLE hScreenBuffer[2];    // 콘솔 창에서 사용할 더블 버퍼링 스크린 버퍼 (2개)
 
@@ -25,10 +25,6 @@ namespace ConsoleRenderer
         hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
         // 콘솔창 크기 set
-        nScreenWidth = 60;
-        nScreenHeight = 60;
-        nScreenBufferSize = nScreenWidth * nScreenHeight;
-
         COORD bufferSize = { nScreenWidth, nScreenHeight };
         SMALL_RECT windowSize = { 0, 0, nScreenWidth - 1, nScreenHeight - 1 };
 

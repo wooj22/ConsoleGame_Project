@@ -6,6 +6,72 @@
 #include "Input.h"
 
 namespace Play {
+	// Map
+    const char* floor1Map[] = {
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                         TOWER OF 7                         ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "                                                            ",
+    "############################################################",
+    "#                                                          #",
+    "#                                                          #",
+    "#            =======         =======         =======       #",
+    "#                                                          #",
+    "#        =======         =======         =======           #",
+    "#                                                          #",
+    "#                                                          #",
+    "#    =======         =======         =======               #",
+    "#                                                          #",
+    "#                                                          #",
+    "#                                                          #",
+    "#        =======         =======         =======           #",
+    "#                                                          #",
+    "#                                                          #",
+    "#    =======         =======         =======               #",
+    "#                                                          #",
+    "#        =======         =======         =======           #",
+    "#                                                          #",
+    "#                                                          #",
+    "#            =======         =======         =======       #",
+    "#                                                          #",
+    "#        =======         =======         =======           #",
+    "#                                                          #",
+    "#    =======         =======         =======               #",
+    "#                                                          #",
+    "#            =======         =======         =======       #",
+    "#                                                          #",
+    "#        =======         =======         =======           #",
+    "#                                                          #",
+    "#                                                          #",
+    "#        =======         =======         =======           #",
+    "#                                                          #",
+    "#                                                          #",
+    "#            =======         =======         =======       #",
+    "#                                                          #",
+    "#        =======         =======         =======           #",
+    "#                                                          #",
+    "#                                                          #",
+    "#            =======         =======         =======       #",
+    "#                                                          #",
+    "#        =======         =======         =======           #",
+    "#                                                          #",
+    "#                                                          #",
+    "#            =======         =======         =======       #",
+    "#                                                          #",
+    "#  P     =======         =======         =======     G     #",
+    "#                                                          #",
+    "############################################################"
+    };
+    const int mapHeight = sizeof(floor1Map) / sizeof(floor1Map[0]);
+
+    // Player
 	COORD g_Player = { 0,0 };
 	//bool g_bQuit = false;
 
@@ -29,8 +95,13 @@ namespace Play {
 
 	// Render
 	void Render() {
-		ConsoleRenderer::ScreenDrawString(0, 0, "PLAY SCENE  [Spacebar]", FG_RED);
-		ConsoleRenderer::ScreenDrawChar(g_Player.X, g_Player.Y, 'P', FG_WHITE);
+		//ConsoleRenderer::ScreenDrawString(0, 0, "PLAY SCENE  [Spacebar]", FG_RED);
+		//ConsoleRenderer::ScreenDrawChar(g_Player.X, g_Player.Y, 'P', FG_WHITE);
+        for (int i = 0; i < mapHeight; i++)
+        {
+            ConsoleRenderer::ScreenDrawString(0, i, floor1Map[i], FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+        }
+        
 	}
 
 	void ProcessInput()
