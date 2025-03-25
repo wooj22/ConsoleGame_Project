@@ -9,7 +9,7 @@
 
 namespace Floor1 {
 	// Map Data
-	const wchar_t* floor1Map[] = {
+	const wchar_t* floor1StaticMap[] = {
 
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	L"                                                            ",
@@ -23,7 +23,7 @@ namespace Floor1 {
 	L"                                                            ",
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	L"▓                                                          ▓",
-	L"▓                                                     G    ▓",
+	L"▓                                                          ▓",
 	L"▓                                              ▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	L"▓                                                          ▓",
 	L"▓                                                          ▓",
@@ -68,10 +68,10 @@ namespace Floor1 {
 	L"▓                                                          ▓",
 	L"▓        ▓▓▓▓▓▓▓▓▓▓▓▓                                      ▓",
 	L"▓                                                          ▓",
-	L"▓     P                                                    ▓",
+	L"▓                                                          ▓",
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"
 	};
-    const int mapHeight = sizeof(floor1Map) / sizeof(floor1Map[0]);
+    const int mapHeight = sizeof(floor1StaticMap) / sizeof(floor1StaticMap[0]);
 
     // Player
 	COORD g_Player = { 0,0 };
@@ -100,7 +100,7 @@ namespace Floor1 {
 		//ConsoleRenderer::ScreenDrawChar(g_Player.X, g_Player.Y, 'P', FG_WHITE);
         for (int i = 0; i < mapHeight; i++)
         {
-            ConsoleRenderer::ScreenDrawStringW(0, i, floor1Map[i], FG_GRAY | FOREGROUND_INTENSITY);
+            ConsoleRenderer::ScreenDrawStringW(0, i, floor1StaticMap[i], FG_GRAY | FOREGROUND_INTENSITY);
         }
 	}
 

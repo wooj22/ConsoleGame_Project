@@ -8,11 +8,11 @@
 
 namespace Floor3 {
 	// Map Data
-	const wchar_t* floor3Map[] = {
+	const wchar_t* floor3StaticMap[] = {
 
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	};
-	const int mapHeight = sizeof(floor3Map) / sizeof(floor3Map[0]);
+	const int mapHeight = sizeof(floor3StaticMap) / sizeof(floor3StaticMap[0]);
 
 
 	// Start
@@ -33,7 +33,7 @@ namespace Floor3 {
 	void Render() {
 		for (int i = 0; i < mapHeight; i++)
 		{
-			ConsoleRenderer::ScreenDrawStringW(0, i, floor3Map[i], FG_GRAY | FOREGROUND_INTENSITY);
+			ConsoleRenderer::ScreenDrawStringW(0, i, floor3StaticMap[i], FG_GRAY | FOREGROUND_INTENSITY);
 		}
 	}
 }

@@ -8,11 +8,11 @@
 
 namespace Floor7 {
 	// Map Data
-	const wchar_t* floor7Map[] = {
+	const wchar_t* floor7StaticMap[] = {
 
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	};
-	const int mapHeight = sizeof(floor7Map) / sizeof(floor7Map[0]);
+	const int mapHeight = sizeof(floor7StaticMap) / sizeof(floor7StaticMap[0]);
 
 
 	// Start
@@ -33,7 +33,7 @@ namespace Floor7 {
 	void Render() {
 		for (int i = 0; i < mapHeight; i++)
 		{
-			ConsoleRenderer::ScreenDrawStringW(0, i, floor7Map[i], FG_GRAY | FOREGROUND_INTENSITY);
+			ConsoleRenderer::ScreenDrawStringW(0, i, floor7StaticMap[i], FG_GRAY | FOREGROUND_INTENSITY);
 		}
 	}
 }

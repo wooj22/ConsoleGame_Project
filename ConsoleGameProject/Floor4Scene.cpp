@@ -8,11 +8,11 @@
 
 namespace Floor4 {
 	// Map Data
-	const wchar_t* floor4Map[] = {
+	const wchar_t* floor4StaticMap[] = {
 
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	};
-	const int mapHeight = sizeof(floor4Map) / sizeof(floor4Map[0]);
+	const int mapHeight = sizeof(floor4StaticMap) / sizeof(floor4StaticMap[0]);
 
 
 	// Start
@@ -33,7 +33,7 @@ namespace Floor4 {
 	void Render() {
 		for (int i = 0; i < mapHeight; i++)
 		{
-			ConsoleRenderer::ScreenDrawStringW(0, i, floor4Map[i], FG_GRAY | FOREGROUND_INTENSITY);
+			ConsoleRenderer::ScreenDrawStringW(0, i, floor4StaticMap[i], FG_GRAY | FOREGROUND_INTENSITY);
 		}
 	}
 }

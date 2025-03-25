@@ -8,11 +8,11 @@
 
 namespace Floor2 {
 	// Map Data
-	const wchar_t* floor2Map[] = {
+	const wchar_t* floor2StaticMap[] = {
 
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	};
-	const int mapHeight = sizeof(floor2Map) / sizeof(floor2Map[0]);
+	const int mapHeight = sizeof(floor2StaticMap) / sizeof(floor2StaticMap[0]);
 
 
 	// Start
@@ -33,7 +33,7 @@ namespace Floor2 {
 	void Render() {
 		for (int i = 0; i < mapHeight; i++)
 		{
-			ConsoleRenderer::ScreenDrawStringW(0, i, floor2Map[i], FG_GRAY | FOREGROUND_INTENSITY);
+			ConsoleRenderer::ScreenDrawStringW(0, i, floor2StaticMap[i], FG_GRAY | FOREGROUND_INTENSITY);
 		}
 	}
 }
