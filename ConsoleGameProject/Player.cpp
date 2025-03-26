@@ -4,55 +4,62 @@
 #include "Time.h"
 #include "GameManager.h"
 
-// 생성자
-Player::Player(int x, int y)
-    : hp(100), damage(10), speed(1), posX(x), posY(y), velocityY(0.0f), isGrounded(false) {
+COORD g_Player = { 3, 57 };
+bool isJumping = false;
+float playerVelocityY = 0.0f;
+float gravity = 300.0f; // 중력
+float jumpPower = -6.0f; // 점프 속도
+
+// Move
+void PlayerMove(const wchar_t** map)
+{
+	// 임시 좌표
+	int nextX = g_Player.X;
+	int nextY = g_Player.Y;
+
+	// 입력 처리
+	if (Input::IsKeyDown(VK_LEFT) && map[g_Player.Y][g_Player.X - 1] != L'▓') {
+		nextX--;
+	}
+	if (Input::IsKeyDown(VK_RIGHT) && map[g_Player.Y][g_Player.X + 1] != L'▓') {
+		nextX++;
+	}
+
+	// 경계 검사 (콘솔 창 크기 기준)
+	if (nextY < 0) nextY = 0;
+
+	// 최종 위치 업데이트
+	g_Player.X = nextX;
 }
 
-// 위치 관련 함수
-int Player::GetPosX() const { return posX; }
-int Player::GetPosY() const { return posY; }
+// Jump
+void PlayerJump(const wchar_t** map) {
+	float deltaTime = Time::GetElapsedTime();
 
-// 체력 관련 함수
-int Player::GetHp() const { return hp; }
-void Player::Damaged(int damage) {
-    hp -= damage;
-    if (hp < 0) hp = 0;
-}
+	// 점프
+	if (Input::IsKeyPressed(VK_UP) && !isJumping)
+	{
+		isJumping = true;
+		playerVelocityY = jumpPower;
+	}
 
-// 이동 처리
-void Player::PlayerMove(int direction) {
-    if (direction == -1 && CanMove(posX - speed, posY)) posX -= speed; // 왼쪽 이동
-    if (direction == 1 && CanMove(posX + speed, posY)) posX += speed;  // 오른쪽 이동
-}
+	// 중력 적용
+	if (isJumping)
+	{
+		playerVelocityY += gravity * deltaTime;
+		float nextY = g_Player.Y + playerVelocityY * deltaTime;
 
-// 점프 처리
-void Player::PlayerJump() {
-    if (isGrounded) {
-        velocityY = -3.5f; // 점프 힘
-        isGrounded = false;
-    }
-}
-
-// 중력 적용
-void Player::ApplyGravity() {
-    if (!isGrounded) {
-        velocityY += 0.2f; // 중력 가속도
-        if (velocityY > 5.0f) velocityY = 5.0f; // 최대 낙하 속도 제한
-    }
-
-    int nextY = posY + (int)velocityY;
-    if (CanMove(posX, nextY)) {
-        posY = nextY;
-    }
-    else {
-        velocityY = 0;
-        isGrounded = true;
-    }
-}
-
-// 충돌 감지
-bool Player::CanMove(int x, int y) const {
-    //return floor1StaticMap[y][x] != L'▓';
-    return true;
+		// 바닥 충돌
+		if (map[(int)nextY + 1][g_Player.X] == L'▓')
+		{
+			isJumping = false;
+			playerVelocityY = 0;
+			g_Player.Y = (int)nextY;
+		}
+		// 아래로 떨어지기
+		else
+		{
+			g_Player.Y = (int)nextY;
+		}
+	}
 }
