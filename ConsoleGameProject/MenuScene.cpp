@@ -48,7 +48,7 @@ namespace Menu {
 	L"▓                                                          ▓",
 	L"▓                      ***************                     ▓",
 	L"▓                                                          ▓",
-	L"▓                   >>  Game Start                         ▓",
+	L"▓                       Game Start                         ▓",
 	L"▓                                                          ▓",
 	L"▓                       How to Play?                       ▓",
 	L"▓                                                          ▓",
@@ -72,6 +72,9 @@ namespace Menu {
 	};
     const int mapHeight = sizeof(menuMap) / sizeof(menuMap[0]);
 
+	const wchar_t* selectBar[] = { L">>"};
+	COORD selectBar_coord = { 20,39 };
+
 	// Start
 	void Initalize() {
 
@@ -80,9 +83,19 @@ namespace Menu {
 	// Update 
 	void Update() {
 		// scene change
+		if (Input::IsKeyPressed(VK_UP)) {
+			selectBar_coord.Y = 39;
+		}
+
+		if (Input::IsKeyPressed(VK_DOWN)) {
+			selectBar_coord.Y = 41;
+		}
+
 		if (Input::IsKeyPressed(VK_SPACE)) {
-			Game::g_SceneCurrent = Game::FLOOR1_SCENE;
-			Floor1::Initalize();
+			if (selectBar_coord.Y == 39) {
+				Game::g_SceneCurrent = Game::FLOOR1_SCENE;
+				Floor1::Initalize();
+			}
 		}
 	}
 
@@ -92,5 +105,6 @@ namespace Menu {
         {
             ConsoleRenderer::ScreenDrawStringW(0, i, menuMap[i], FG_YELLOW);
         }
+		ConsoleRenderer::ScreenDrawStringW(selectBar_coord.X, selectBar_coord.Y, selectBar[0], FG_YELLOW);
 	}
 }
