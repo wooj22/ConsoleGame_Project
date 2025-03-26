@@ -70,7 +70,7 @@ namespace Floor1 {
 	L"▓                                                          ▓",
 	L"▓        ▓▓▓▓▓▓▓▓▓▓▓▓                                      ▓",
 	L"▓                                                          ▓",
-	L"▓                                                          ▓",
+	L"▓                  G                                       ▓",
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"
 	};
 	const int mapHeight = sizeof(floor1StaticMap) / sizeof(floor1StaticMap[0]);
@@ -79,6 +79,7 @@ namespace Floor1 {
 	// Start
 	void Initalize() {
 		Time::Initialize();
+		g_Player = { 3, 57 };
 	}
 
 	// Update
@@ -108,7 +109,7 @@ namespace Floor1 {
 		// map
         for (int i = 0; i < mapHeight; i++)
         {
-            ConsoleRenderer::ScreenDrawStringW(0, i, floor1StaticMap[i], FG_GRAY | FOREGROUND_INTENSITY);
+            ConsoleRenderer::ScreenDrawStringW(0, i, floor1StaticMap[i], FG_YELLOW);
         }
 
 		// player

@@ -24,6 +24,6 @@ namespace End {
 
 	// Render
 	void Render() {
-		ConsoleRenderer::ScreenDrawString(0, 0, "END SCENE  5초뒤 MENU SCENE으로 이동합니다", FG_GRAY);
+		ConsoleRenderer::ScreenDrawString(0, 0, "이걸 깨요??? (5초 뒤 메뉴화면 이동)", FG_GRAY);
 	}
 }
