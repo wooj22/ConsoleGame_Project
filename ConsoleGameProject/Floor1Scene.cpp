@@ -25,7 +25,7 @@ namespace Floor1 {
 	L"                                                            ",
 	L"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	L"▓                                                          ▓",
-	L"▓                                                          ▓",
+	L"▓                                                        G ▓",
 	L"▓                                              ▓▓▓▓▓▓▓▓▓▓▓▓▓",
 	L"▓                                                          ▓",
 	L"▓                                                          ▓",
@@ -92,6 +92,11 @@ namespace Floor1 {
 		PlayerJump(floor1StaticMap);
 
 		// scene change
+		if (floor1StaticMap[g_Player.Y][g_Player.X] == 'G') {
+			Game::g_SceneCurrent = Game::FLOOR2_SCENE;
+			Floor2::Initalize();
+		}
+
 		if (Input::IsKeyPressed(VK_SPACE)) {
 			Game::g_SceneCurrent = Game::FLOOR2_SCENE;
 			Floor2::Initalize();
