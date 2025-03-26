@@ -74,7 +74,7 @@ namespace Floor1 {
     const int mapHeight = sizeof(floor1StaticMap) / sizeof(floor1StaticMap[0]);
 
     // Player
-	COORD g_Player = { 0,0 };
+	COORD g_Player = { 3, 57 };
 
 	// Start
 	void Initalize() {
